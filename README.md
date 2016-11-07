@@ -7,3 +7,10 @@ a repo for practicing my javascript
 ```
 webpack
 ```
+
+## Tips
+
+```js
+inspect(document)
+inspect(documet.__proto__)
+```

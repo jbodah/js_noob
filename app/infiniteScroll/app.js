@@ -1,12 +1,36 @@
-import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
+require("./app.css")
+// import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 
-class Document {
-  render() {
-    let items = ["hello", "world"];
-    document.write(this.renderItems(items));
+class List {
+  constructor(parent) {
+    this.state = {
+      parent: parent,
+      items: []
+    }
   }
 
-  renderItems(items) {
+  loadMoreItems() {
+    this.updateState(state => {
+      state.items = state.items.concat(["hello", "world"]);
+      return state;
+    })
+  }
+
+  updateState(updateFn) {
+    console.log("[updateState] old");
+    console.log(this.state);
+    this.state = updateFn(this.state);
+    console.log("[updateState] new")
+    console.log(this.state);
+    this.render();
+  }
+
+  render() {
+    this.state.parent.innerHTML = this.renderItems();
+  }
+
+  renderItems() {
+    const items = this.state.items;
     return `<ul>${items.map(this.renderItem).join("")}</ul>`;
   }
 
@@ -15,5 +39,6 @@ class Document {
   }
 }
 
-let d = new Document
-d.render()
+let list = new List(document.getElementById("list"));
+list.loadMoreItems();
+list.loadMoreItems();
