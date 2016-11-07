@@ -1,3 +1,5 @@
+import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
+
 class Document {
   render() {
     let items = ["hello", "world"];
