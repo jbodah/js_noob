@@ -12,5 +12,5 @@ webpack
 
 ```js
 inspect(document)
-inspect(documet.__proto__)
+inspect(document.__proto__)
 ```
