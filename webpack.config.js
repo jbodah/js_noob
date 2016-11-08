@@ -1,7 +1,8 @@
 module.exports = {
   context: __dirname + "/app",
   entry: {
-    infiniteScroll: "./infiniteScroll/app"
+    infiniteScroll: "./infiniteScroll/app",
+    slidingWindows: "./slidingWindows/app"
   },
   output: {
     path: __dirname + "/dist",
