@@ -1,0 +1,73 @@
+.column {
+  display: inline-block;
+  padding: 0;
+}
+
+.window {
+  position: relative;
+  border: 2px black solid;
+  height: 300px;
+  width: 300px;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.foreground, .background {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.window:hover > .slide-left {
+  transform: translate(-100%, 0);
+}
+.window:hover > .slide-right {
+  transform: translate(100%, 0);
+}
+.window:hover > .slide-up {
+  transform: translate(0, -100%);
+}
+.window:hover > .slide-down {
+  transform: translate(0, 100%);
+}
+
+.foreground {
+  z-index: 10;
+  transition: transform 0.3s ease-in;
+}
+
+.background {
+  z-index: 5;
+}
+
+.red {
+  background-color: red;
+}
+
+.black {
+  background-color: black;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.green {
+  background-color: green;
+}
+
+.purple {
+  background-color: purple;
+}
+
+.gray {
+  background-color: gray;
+}
+
+.orange {
+  background-color: orange;
+}
