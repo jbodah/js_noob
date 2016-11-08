@@ -1,9 +1,11 @@
 module.exports = {
   context: __dirname + "/app",
-  entry: ["./infiniteScroll/app"],
+  entry: {
+    infiniteScroll: "./infiniteScroll/app"
+  },
   output: {
     path: __dirname + "/dist",
-    filename: "bundle.js"
+    filename: "[name].bundle.js"
   },
   module: {
     loaders: [
