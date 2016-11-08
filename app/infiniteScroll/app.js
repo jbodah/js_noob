@@ -11,7 +11,12 @@ class List {
 
   loadMoreItems() {
     this.updateState(state => {
-      state.items = state.items.concat(["hello", "world"]);
+      let newItems =
+        Array(50)
+          .fill()
+          .reduce((acc) => acc.concat(["hello", "world"]), [])
+
+      state.items = state.items.concat(newItems);
       return state;
     })
   }
@@ -31,7 +36,8 @@ class List {
 
   renderItems() {
     const items = this.state.items;
-    return `<ul>${items.map(this.renderItem).join("")}</ul>`;
+    return `<ul>${items.map(this.renderItem).join("")}</ul>`
+      + `<div id="count">${items.length}</div>`;
   }
 
   renderItem(item) {
@@ -39,6 +45,20 @@ class List {
   }
 }
 
+class InfiniteScroll {
+  bindEvent(callback) {
+    window.onscroll = (win => {
+      console.log(win.pageY);
+      console.log(document.body.scrollHeight)
+      console.log(win.pageY >= document.body.scrollHeight * 0.6)
+      if (win.pageY >= document.body.scrollHeight * 0.6) {
+        callback();
+      }
+    });
+  }
+}
+
 let list = new List(document.getElementById("list"));
 list.loadMoreItems();
-list.loadMoreItems();
+let scroll = new InfiniteScroll;
+scroll.bindEvent(() => list.loadMoreItems());
