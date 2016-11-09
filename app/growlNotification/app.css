@@ -1,0 +1,49 @@
+.button {
+  border: 2px solid gray;
+  padding: 18px;
+  font-family: Helvetica;
+  cursor: pointer;
+  border-radius: 18px;
+  width: 60px;
+  text-align: center;
+}
+
+.notification {
+  overflow: hidden;
+  position: absolute;
+  height: 150px;
+  width: 300px;
+  top: 0px;
+  right: 0px;
+}
+
+.notification-instance {
+  border: 2px solid gray;
+  width: 200px;
+  padding: 18px;
+  border-radius: 18px;
+  font-family: Helvetica;
+  position: absolute;
+  right: -285px;
+  top: 15px;
+  transition: transform 0.2s ease-in;
+}
+
+.notification.active > .notification-instance {
+  transform: translate(-300px, 0);
+}
+
+.notification-header {
+  padding-bottom: 10px;
+}
+
+.notification-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.notification-icon {
+}
+
+.notification-body {
+}
