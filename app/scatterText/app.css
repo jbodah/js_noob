@@ -1,0 +1,31 @@
+html, body {
+  height: 100%;
+}
+
+.container {
+  font-size: 36px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.subcontainer {
+  border: 1px dotted blue;
+  font-size: 36px;
+  height: 35%;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  padding: 0 50px;
+}
+
+.letter {
+  transition: all 1s;
+}
+
+.subcontainer:hover > .letter {
+  transform: translate(0, 0) !important;
+}
