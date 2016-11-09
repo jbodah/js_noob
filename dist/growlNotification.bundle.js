@@ -50,7 +50,7 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	__webpack_require__(1);
+	__webpack_require__(5);
 
 	var GrowlNotification = function () {
 	  function GrowlNotification(id) {
@@ -93,46 +93,8 @@
 	});
 
 /***/ },
-/* 1 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(2);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(4)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./app.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./app.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 2 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(3)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".button {\n  border: 2px solid gray;\n  padding: 18px;\n  font-family: Helvetica;\n  cursor: pointer;\n  border-radius: 18px;\n  width: 60px;\n  text-align: center;\n}\n\n.notification {\n  overflow: hidden;\n  position: absolute;\n  height: 150px;\n  width: 300px;\n  top: 0px;\n  right: 0px;\n}\n\n.notification-instance {\n  border: 2px solid gray;\n  width: 200px;\n  padding: 18px;\n  border-radius: 18px;\n  font-family: Helvetica;\n  position: absolute;\n  right: -285px;\n  top: 15px;\n  transition: transform 0.2s ease-in;\n}\n\n.notification.active > .notification-instance {\n  transform: translate(-300px, 0);\n}\n\n.notification-header {\n  padding-bottom: 10px;\n}\n\n.notification-title {\n  font-size: 18px;\n  font-weight: 600;\n}\n\n.notification-icon {\n}\n\n.notification-body {\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
+/* 1 */,
+/* 2 */,
 /* 3 */
 /***/ function(module, exports) {
 
@@ -438,6 +400,46 @@
 		if(oldSrc)
 			URL.revokeObjectURL(oldSrc);
 	}
+
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(6);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./app.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./app.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".button {\n  border: 2px solid gray;\n  padding: 18px;\n  font-family: Helvetica;\n  cursor: pointer;\n  border-radius: 18px;\n  width: 60px;\n  text-align: center;\n}\n\n.notification {\n  overflow: hidden;\n  position: absolute;\n  height: 150px;\n  width: 300px;\n  top: 0px;\n  right: 0px;\n}\n\n.notification-instance {\n  border: 2px solid gray;\n  width: 200px;\n  padding: 18px;\n  border-radius: 18px;\n  font-family: Helvetica;\n  position: absolute;\n  right: -285px;\n  top: 15px;\n  transition: transform 0.2s ease-in;\n}\n\n.notification.active > .notification-instance {\n  transform: translate(-300px, 0);\n}\n\n.notification-header {\n  padding-bottom: 10px;\n}\n\n.notification-title {\n  font-size: 18px;\n  font-weight: 600;\n}\n\n.notification-icon {\n}\n\n.notification-body {\n}\n", ""]);
+
+	// exports
 
 
 /***/ }

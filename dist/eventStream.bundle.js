@@ -50,39 +50,106 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	__webpack_require__(9);
+	__webpack_require__(1);
 
-	HTMLCollection.prototype.forEach = Array.prototype.forEach;
+	var EventStream = function () {
+	  function EventStream(el) {
+	    _classCallCheck(this, EventStream);
 
-	var Scatterer = function () {
-	  function Scatterer() {
-	    _classCallCheck(this, Scatterer);
+	    var list = document.getElementById(el).children[0];
+	    this.state = {
+	      list: list
+	    };
 	  }
 
-	  _createClass(Scatterer, [{
-	    key: "scatterAll",
-	    value: function scatterAll(className) {
-	      document.getElementsByClassName(className).forEach(this.scatter);
+	  _createClass(EventStream, [{
+	    key: "addEvent",
+	    value: function addEvent(event) {
+	      var html = this.buildEventNode(event);
+	      this.state.list.innerHTML += html;
+	      this.shiftEventsUp(this.removeOldestEvent.bind(this));
 	    }
 	  }, {
-	    key: "scatter",
-	    value: function scatter(element) {
-	      var shiftMax = 500;
-	      var xShift = Math.random() * shiftMax - shiftMax / 2;
-	      var yShift = Math.random() * shiftMax - shiftMax / 2;
-	      element.style.transform = "translate(" + xShift + "px, " + yShift + "px)";
+	    key: "buildEventNode",
+	    value: function buildEventNode(event) {
+	      return "<div class=\"event-stream-event\">\n        <div class=\"event-stream-event-timestamp\">\n          " + event.timestamp + "\n        </div>\n        <div class=\"event-stream-event-body\">\n          <div class=\"event-stream-event-title\">\n            " + event.title + "\n          </div>\n          <div class=\"event-stream-event-message\">\n            " + event.message + "\n          </div>\n        </div>\n      </div>";
+	    }
+	  }, {
+	    key: "shiftEventsUp",
+	    value: function shiftEventsUp(then) {
+	      var _this = this;
+
+	      var shift = 15 * 2 + 1 * 2 + 61;
+	      this.state.list.className += " shift-up";
+	      setTimeout(function () {
+	        then();
+	        // TODO: @jbodah 2016-11-09: has a problem with fast clicking
+	        _this.state.list.className = _this.state.list.className.replace(/ shift-up/, "");
+	      }, 800);
+	    }
+	  }, {
+	    key: "removeOldestEvent",
+	    value: function removeOldestEvent() {
+	      this.state.list.removeChild(this.state.list.children[0]);
 	    }
 	  }]);
 
-	  return Scatterer;
+	  return EventStream;
 	}();
 
-	var s = new Scatterer();
-	s.scatterAll("letter");
+	var es = new EventStream("event-stream");
+	var n = 19;
+	document.getElementById("add-event").addEventListener("click", function () {
+	  var e = {
+	    title: "User Login",
+	    message: "User 123 has logged in.",
+	    timestamp: "Nov " + n
+	  };
+	  es.addEvent(e);
+	  n += 1;
+	});
 
 /***/ },
-/* 1 */,
-/* 2 */,
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(2);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./app.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./app.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 2 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".button {\n  border: 2px solid gray;\n  padding: 18px;\n  font-family: Helvetica;\n  cursor: pointer;\n  border-radius: 18px;\n  width: 100px;\n  text-align: center;\n}\n\n.event-stream {\n  border: 2px solid gray;\n  border-radius: 15px;\n  width: 300px;\n  height: 372px;\n  overflow: hidden;\n}\n\n.shift-up {\n  transition: transform 0.8s ease-out;\n  transform: translate(0, -93px);\n}\n\n.event-stream-event {\n  height: 61px;\n  padding: 15px;\n  border: 1px solid lightgray;\n  font-family: Helvetica;\n}\n\n.event-stream-event-timestamp {\n  display: inline-block;\n  font-size: 25px;\n  color: gray;\n}\n\n.event-stream-event-body {\n  display: inline-block;\n}\n\n.event-stream-event-title {\n  font-weight: 700;\n  margin: 10px;\n  font-size: 16px\n}\n\n.event-stream-event-message {\n  margin: 10px;\n  font-size: 14px;\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
 /* 3 */
 /***/ function(module, exports) {
 
@@ -388,50 +455,6 @@
 		if(oldSrc)
 			URL.revokeObjectURL(oldSrc);
 	}
-
-
-/***/ },
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(10);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(4)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./app.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./app.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 10 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(3)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "html, body {\n  height: 100%;\n}\n\n.container {\n  font-size: 36px;\n  height: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.subcontainer {\n  border: 1px dotted blue;\n  font-size: 36px;\n  height: 35%;\n  width: 40%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: grab;\n  padding: 0 50px;\n}\n\n.letter {\n  transition: all 1s;\n}\n\n.subcontainer:hover > .letter {\n  transform: translate(0, 0) !important;\n}\n", ""]);
-
-	// exports
 
 
 /***/ }

@@ -5,6 +5,7 @@ module.exports = {
     slidingWindows: "./slidingWindows/app",
     scatterText: "./scatterText/app",
     growlNotification: "./growlNotification/app",
+    eventStream: "./eventStream/app",
   },
   output: {
     path: __dirname + "/dist",
