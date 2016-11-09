@@ -3,6 +3,7 @@ module.exports = {
   entry: {
     infiniteScroll: "./infiniteScroll/app",
     slidingWindows: "./slidingWindows/app"
+    scatterText: "./scatterText/app"
   },
   output: {
     path: __dirname + "/dist",
